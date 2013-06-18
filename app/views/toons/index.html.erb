@@ -1,0 +1,39 @@
+<h4>Listing Toons</h4>
+<br />
+<%= form_tag toons_path, :method => :get, :id=> "toons_search"  do %>
+  <%= text_field_tag :search, params[:search] ,:style=>"border:0"%>
+  <%= submit_tag "Search", :name => nil ,:class=>"btn toon_sub" %>
+<% end %>
+<div style=" clear: both; padding-right: 30px;">
+<p>
+  <% if user_signed_in? %>
+      <%= link_to " New Toon", new_toon_path , :class=>"btn icon-plus btn-primary"%><br />
+    <% else %>
+    <%= link_to " New Toon", new_user_session_path, :class=>"btn icon-plus login btn-primary" , :remote => true %><br />
+  <% end %>
+</p>
+</div>
+<div style="float:left; clear: both;">
+<div id="toons" >
+  <%= render 'toons' %>
+  </div>	
+		<%= paginate @toons%>	
+</div>
+<%if @toons_corousel.count > 5 %>
+<div style="float: left; clear: both;height: 200px;">
+  <div class="slideShowContainer">
+    <div class="imagesContainer">
+      <ul class="carousel11">
+        <% @toons_corousel.each do |t| %>
+          <li>
+            <%=link_to image_tag(t.image.url), toon_path(t) %>           
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <p class="slideShowControls">
+    <span class="slideShowControls prev">&lsaquo;</span>
+    <span class="slideShowControls next">&rsaquo;</span>
+  </p>
+</div><%end%>

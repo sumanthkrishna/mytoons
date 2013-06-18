@@ -1,0 +1,95 @@
+@import "toons";
+
+body {
+  position: absolute;
+  width: 100%;
+  height: 90%;
+}
+.wrapper {
+  min-height: 95%;
+  height: auto !important;
+  margin: 0 auto;
+}
+footer {
+  color: #666;
+  background: #222;
+  padding: 10px;
+  border: 1px solid #000;
+  clear: both;
+}
+
+/*Error messages Begin*/
+.field_with_errors {
+  display: inline;
+  .message {
+    display: inline;
+    color: #D00;
+    padding-left: 5px;
+    font-size: 12px;}
+
+  .error {
+    color: #D8000C;
+    background-image: url('error.png');
+    padding: 5px 10px 5px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    list-style: none;
+  }
+ }
+/*Error messages End*/
+
+/* pagination css */
+
+.pagination a, span.page {
+  float: left;
+  
+}
+.pagination {
+  span.page{
+     vertical-align:middle;
+  }
+  span.current, span.gap {
+    background: #261f1f;
+    color: white;
+    border: 1px solid #261f1f;
+    padding: 9px 6px 3px;
+    min-width: 30px;
+    height: 23px;
+    margin-right: 5px;
+    text-align: center;   
+     @include rounded-corners(2px); 
+  }
+  a {
+    border: 1px solid #c3c4ba;
+    @include rounded-corners(2px);  
+    margin-right: 5px;
+    padding:0 6px 12px;
+    min-width: 30px;
+    text-align: center;
+    height: 23px;
+    background: #dddddd;
+    color: #111111;
+    &:hover {
+        border: 1px solid #818171;
+        @include boxshadow(0 0 4px rgba(0, 0, 0, 0.3));
+      }
+    &:active {
+      @include rounded-corners(2px);  
+      outline: none;
+      }
+  }
+}
+.for_login_errors {
+  color: red;
+  margin-bottom: 10px;
+}
+
+// .nav_links a { 
+  // font-weight:bold;
+  // &:link {color:#FF0000;}      /* unvisited link */
+  // &:visited {color:#555555}  /* visited link */
+  // &:hover {color:#0088CC;}  /* mouse over link */
+  // &:active {background-color:#818171;color:#FFF;}  /* selected link */ 
+// }
+textarea, input[type="text"], input[type="password"], input[type="email"], 
+ input[type="url"]{color:#555555 !important;}

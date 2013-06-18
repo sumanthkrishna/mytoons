@@ -1,0 +1,77 @@
+<div class="span12 toons_show" >
+	<%= hidden_field_tag 'show_login',@selected_login%>
+	<div class="span2" style="float: left; margin-top: 15px; width: 275px; margin-left: 0px;	">
+		<%= image_tag(@toon.image_url, :alt => "test image", :style =>
+		"width:175px;border:1px solid #DFE3E6; height:160px; padding-bottom:
+		5px;margin-left: 50px;") %>
+		<div class="toon_name" >
+			<a href="#" style="text-decoration:none; text-shadow: 2px 2px 2px #36a6c2;filter: dropshadow(color=white, offx=2, offy=2);"> <%= @toon.name %> </a></h5>
+		</div>
+	</div>
+	<div class="span11" style="float: left; margin-top: 40px; margin-left:
+	0px;  width: 690px;">
+		<div>
+			<% if current_user%>
+			<span style="margin-left: 500px;">
+			<%  if  ((current_user.has_role?  :Moderator) && (@toon.state == "inactive")) %>
+			<%= link_to 'Approve',approve_path(@toon), :confirm => 'Are you sure?' ,:style=> "margin-right:15px;" , :class=>"btn btn-success"%>
+			<%= link_to 'Reject',disapprove_path(@toon), :confirm => 'Are you sure?', :class=>"btn btn-danger" %>
+			<% end%>
+			<%  if  ((current_user.has_role? :Publisher) && (@toon.state == "approved")) %>
+			<%= link_to 'Publish',publish_path(@toon), :confirm => 'Are you sure?' , :class=>"btn btn-success" %>
+			<% end%>
+			</span>
+			<% end%>
+			<h3 style="color: #4D5ECD;"> Description : </h3><%= @toon.description %>
+		</div>
+		<div style="padding-top: 20px;">
+			<h3 style="color:#4D5ECD;"> Why
+			Favourite : </h3><%= @toon.why_fav %>
+		</div>
+		<% if @toon.state=="published"%>
+		<h3>Comments:</h3>
+		 <% @comments.each do |comment| %>
+                
+                <div class="commentbody">
+                    <div class="commenthead">               
+                      <%=link_to comment.user.fullname %> :<span style="color:#777;"> <%= comment.body %><br /></span>
+                      <span style="color:#474747"><%=time_ago_in_words(comment.created_at)%> ago</span> 
+                      <% # display delete link only for comments written by this particular user %>
+                      <% if user_signed_in? and comment.user_id == current_user.id %>
+                          <span><%= link_to 'delete', toon_comment_path(@toon, comment), :confirm => 'Are you sure?', :method => :delete, :class => "" %></span>
+                      <% end %> 
+                    </div>
+                    
+                </div>  
+            
+        <% end %>
+        
+        <% # add a new comment %>   
+            
+                <% if user_signed_in? %>                   
+                    <div class="commentbody">
+                        <% if current_user.fullname == nil or current_user.fullname == '' %>
+                            <div class="commenthead">
+                                Please complete your <%= link_to "profile", edit_user_registration_path %> before posting comments.
+                            </div>
+                        <% else %>              
+                            <div class="commenthead">
+                                <%= current_user.fullname %> :
+                            </div>
+                            <div>
+                                <%= form_for [@toon, current_user.comments.new ] ,:validate => true  do |f| %>
+                                    <%= f.text_area :body,  :cols=>20,:rows=>2,:style=>"resize: none;" %><br />
+                                    <%= f.submit "Add Comment",:class=>"btn" %>
+                                <% end %>               
+                            </div>          
+                        <% end %>
+                    </div>  
+                <% else %>
+                    <div class="signin">
+                        Please <%= link_to "sign in", new_user_session_path,:class=>"login",:remote=>:true %> before posting a comment.
+                    </div>
+                <% end %>
+     
+		<%end%>
+	</div>
+</div>

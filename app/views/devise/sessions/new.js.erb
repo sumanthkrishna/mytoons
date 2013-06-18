@@ -1,0 +1,5 @@
+
+$(".login-div").show();
+$(".overlay").show();
+
+$(".login-div").html('<%= escape_javascript(render :partial => "devise/sessions/new", :locals => {:@resource => resource})%>')

@@ -1,0 +1,9 @@
+
+  <h3>Create Your Toon</h3>
+
+            <%= form_for @toon  ,:validate => true   do |f| %>
+            
+            <%= render :partial => "form", :object => f %>
+            <%= f.submit "Create Toon", :class=>"btn btn-inverse",:style=>"margin:10px 0 0 212px;"  %>
+            <% end %>
+

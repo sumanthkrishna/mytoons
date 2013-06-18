@@ -1,0 +1,14 @@
+<table class="table-striped table-condensed table_css"><% @toons.each do |toon| %>
+
+<tr><td><div class="span11" style="float: left; clear: both; margin-left: 30px !important; padding: 30px 0;">
+	<div class="span2" style="float:left;">
+		<%= image_tag(toon.image_url, :alt => "test image", :style => "width:150px ;height:100px") %>
+	</div>
+	<div class="span9 toon_index" style="float: left;">		
+			<h5>Name : <a><%= link_to toon.name , toon_path(toon)%></a></h5>
+			<h5> Description : </h5><span><%= toon.description[0,150] %> ...</span>
+			<h5> Why Favourite : </h5><span><%= toon.why_fav[0,150] %> ...</span>
+	</div>
+</div></td></tr>
+<% end %>
+</table>

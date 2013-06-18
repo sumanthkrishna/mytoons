@@ -1,0 +1,23 @@
+<h4>Unpublished Toons </h4>
+<br />
+<div class="toon_index">
+<table class="table .table-striped">
+  <tr>
+    <th>Toon Name</th>
+    <th>Toon Description</th>
+    <th>Why Fav</th>
+  </tr>
+
+<% @approved.each do |toon| %>
+  <tr >
+    <td ><%=h toon.name %></td>
+    <td style=" width: 227px;"><span><%=h toon.description[0,100] %> ...</span></td>
+    <td style=" width: 227px;"><span><%=h toon.why_fav[0,100] %> ...</span></td>
+    <td><%= link_to 'Show', toon %></td>
+    <td><%= link_to 'Publish',publish_path(toon), :confirm => 'Are you sure?' %></td>
+
+  </tr>
+<% end %>
+</table>
+</div>
+

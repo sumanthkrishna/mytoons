@@ -1,0 +1,1 @@
+$("#user<%=@user.id%>_role").html('<%= escape_javascript(render :partial => "roles", :locals => {:user => @user })%>')

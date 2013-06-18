@@ -1,0 +1,182 @@
+// Place all the styles related to the toons controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/*Upload file Begin*/
+// @mixin rounded-corners($radius) {
+  // border-radius: $radius;
+  // -moz-border-radius: $radius;
+  // -webkit-border-radius: $radius;
+// }
+
+@mixin rounded-corners($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+@mixin transform-size(){
+  -webkit-transform: rotate(0deg) scale(1.25);
+          -moz-transform: rotate(0deg) scale(1.25);
+          -o-transform: rotate(0deg) scale(1.25);
+          -ms-transform: rotate(0deg) scale(1.25);
+          transform: rotate(0deg) scale(2.25);
+}
+@mixin boxshadow($shadow) {
+      -webkit-box-shadow: $shadow;
+      -moz-box-shadow: $shadow;
+      box-shadow: $shadow;
+}
+
+table.table_newtoon td{ padding:5px 0 0 15px;}
+.table_css td {
+  border-bottom-left-radius: 50px;
+  width: 1000px;
+}
+
+input[type=file].upload {
+  cursor: pointer;
+  height: 28px;
+  left: 28px; 
+  margin-right:80px !important;
+}
+
+
+// .upload {
+  // position: relative;
+// 
+ // input[type=text] {
+  // width: 210px;
+  // height: 18px;
+  // vertical-align: top;
+  // margin-right: 10px;
+  // padding: 4px;
+// }
+// input[type=button] {
+  // width: 80px;
+// }
+// input[type=file] {
+  // cursor: pointer;
+  // height: 28px;
+  // left: 28px;
+  // position: absolute;
+  // width: 50px;
+  // z-index: 50;
+  // filter: alpha(opacity=0);
+  // -moz-opacity: 0;
+  // -khtml-opacity: 0;
+  // opacity: 0;
+  // -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+// }
+// }
+/*Upload file End*/
+.carousel11 li {
+  list-style: none;
+  display: inline;
+}
+/*Carousel Css Begin*/
+p.slideShowControls span{
+  position: relative;
+  top: -125px;
+  width: 15px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 50px;
+  color: white;
+  text-align: center;
+  background: #222;
+  opacity: 0.1;
+  filter: alpha(opacity=50);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  cursor: pointer;
+   &:hover {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  }
+}
+div.slideShowContainer {
+  margin: 25px;
+  margin-left: 0px;/*width:auto;*//*  width: 1050px;*/
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+  max-width: 900px;/*padding-bottom: 25px;*/
+  div.imagesContainer {
+    position: absolute;
+    left: 0;
+    -webkit-transition: all 1.0s ease-in-out;
+    -moz-transition: all 1.0s ease-in-out;
+    -o-transition: all 1.0s ease-in-out;
+    -ms-transition: all 1.0s ease-in-out;
+    transition: all 1.0s ease-in-out;
+    height: 50px;
+    padding: 25px 0;
+      img { 
+        margin: 0 4px;
+        padding: 0 ;
+        float: left;
+        width: 100px;
+        height: 100px;
+        border: 1px solid #2C2C2C;
+        @include rounded-corners(10px);
+        &:hover {  
+        @include transform-size();
+          z-index: 10;
+        }
+      }
+    }
+}
+p.slideShowControls span {
+  &.prev {
+    float: left;
+    left: -25px; }
+  &.next {
+    float: left; }
+}
+
+/*Carousel Css End*/
+.toon_sub{
+  height: 30px;
+  margin: -40px 0 9px 230px;
+}
+.toon_name {
+  padding-left: 81px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  float: left;
+  margin-top: 7px;
+}
+.toons_show {
+  float: left;
+  clear: both;
+  padding-top: 30px;
+  width: 950px;
+  @include boxshadow(0 10px 10px #8C7666);
+  @include rounded-corners(4px 0px 65px 0px);
+  background: rgba(23,23,25,0.11);
+  padding-bottom: 20px;
+}
+// Toons status in myshow Begin
+.toon_status{ padding-left:5px;}
+.toon_status_disapproved{
+    color:red;
+}
+.toon_status_published{
+    color:green;
+}
+.toon_status_processing{
+    color:orange;
+}
+// Toons status in myshow End
+.edit {
+  background-image: url("/images/edit.png");
+  background-position: left center;
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+.delete {
+  background-image: url("/images/trash.png");
+  background-position: left center;
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+

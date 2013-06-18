@@ -1,0 +1,5 @@
+<%= form_for(user,:remote=>true, :html => { :style => 'height:85px;' }) do |f|  %> <div>
+				 		Current Role : <%= @user.roles.first.try(:name) %><br />
+ 						Change Role : <%= select_tag "user_role", options_from_collection_for_select(@roles, "id","name") %>
+  						<div><%=f.submit "Update" ,:class=>"btn btn-info" %></div>
+<% end %>

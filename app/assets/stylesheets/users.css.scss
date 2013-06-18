@@ -1,0 +1,57 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "toons";
+
+/*Login popup Begin*/
+.login_div_header {
+  width: 450px;
+  background-color: #2C2C2C;
+  color: #FFF;
+  z-index: 100;
+  margin: -10px 0 30px -50px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.login-div {
+  display: none;
+  background-color: white;
+  @include rounded-corners(5px);
+  position: fixed;
+  padding: 10px 50px;
+  width: 350px;
+  z-index: 3;
+  height: 250px;
+}
+.overlay {
+  display: none;
+  background-color: #000000;
+  position: absolute;
+  height: 100%;
+  left: 0;
+  opacity: 0.5;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+/*login popup End*/
+.reg_table td{
+  padding:5px 15px;
+}
+.edit {
+  background-image: url("/images/edit.png");
+  background-position: left center;
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+.delete {
+  background-image: url("/images/trash.png");
+  background-position: left center;
+  background-repeat: no-repeat;
+  padding-left: 20px;
+}
+.user_tab td, th {
+  border-top: 0px solid white !important;
+  width: 100px !important;
+  padding: 0px;
+}

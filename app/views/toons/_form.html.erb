@@ -1,0 +1,27 @@
+<table class="table_newtoon">
+	<tr>
+		<td><%= form.label :Name %></td>
+		<td><%= form.text_field :name ,:placeholder=>"Toon Name" %></td>
+	</tr>
+	<tr>
+		<td><%= form.label :Description %></td>
+		<td><%= form.text_area :description ,:placeholder=>"Describe your Fav Cartoon", :cols=>20,:rows=>3,:style=>"resize: none;"  %></td>
+	</tr>
+	<tr>
+<!-- 		<td> <%= form.label :Upload_Toon %></td>
+		<td>
+		<div class="upload">
+			<input type="text" value=""  placeholder="Upload Your favourite cartoon" />
+			<input type="button" value="Upload " class="btn btn-info" /><%= form.file_field :image %>
+		</div></td> -->
+		
+			<td> <%= form.label :Upload_Toon %> </td>
+		<td> <%= form.file_field :image, :class=>"upload" %>
+		 </td>
+		
+	</tr>
+	<tr>
+		<td><%= form.label :Why_favourite %></td>
+		<td><%= form.text_area :why_fav ,:placeholder=>"Why is it Your fav Toon" , :cols=>20,:rows=>3,:style=>"resize: none;" %></td>
+	</tr>
+</table>

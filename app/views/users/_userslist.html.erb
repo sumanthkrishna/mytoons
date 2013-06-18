@@ -1,0 +1,35 @@
+<table id="users_list" class="table table-striped table-bordered table-condensed pretty" title="Users list" >
+	<thead>
+		<tr>
+			<th> Full Name </th>
+			<th> Phone Number </th>
+			<th> Email </th>
+			<th>Last Signed In</th>
+			<th>IP Address </th>
+			<th>Role </th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+
+	<tbody>
+			
+			<% @users.each do |user| %>
+			<tr>
+				<td> <%= user.fullname %> </td>
+				<td> <%= user.phone_number %> </td>
+				<td> <%= user.email %> </td>		
+				<td><%= user.last_sign_in_at %></td>		
+				<td><%= user.last_sign_in_ip %></td>	
+				 <td id="user<%=user.id%>_role" ><%= form_for(user,:remote=>true, :html => { :style => 'height:85px;' }) do |f|  %> <div>
+				 		Current Role : <%= user.roles.first.try(:name) %><br />				 		
+ 						Change Role : <%= select_tag "user_role", options_from_collection_for_select(@roles, "id","name") %>
+  						<div><%=f.submit "Update" ,:class=>"btn btn-info" %></div>
+					<% end %>
+				 </td>		
+				<td><span class="delete"><%= link_to 'Destroy', user , :confirm=> 'Are you sure?', :method=> :delete%></span></td>
+				
+			</tr>			
+			</tr>			
+			<% end %>			
+	</tbody>
+</table>
